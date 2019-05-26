@@ -1,0 +1,39 @@
+apply plugin: 'java'
+
+task taskA << { println "Task A"}
+task taskB << { println "Task B"}
+task taskC << { println "Task C"}
+task taskD << { println "Task D"}
+task taskE << { println "Task E"}
+task taskF << { println "Task F"}
+
+task taskG {
+    dependsOn taskE
+    doLast {
+       println "Task G" 
+    }
+}
+
+taskA.dependsOn taskB 
+taskA.dependsOn taskC, taskD 
+
+taskC.dependsOn taskE
+taskD.dependsOn taskE
+taskA.dependsOn taskE
+taskB.mustRunAfter taskG
+taskC.finalizedBy taskA
+
+
+taskA.dependsOn taskG
+
+
+task taskAll << { println "Task All"}
+task taskUnit << { println "Task Unit"}
+task taskUI << { println "Task UI"}
+task taskMergeReports << { println "Task merge reports" }
+
+taskAll.dependsOn taskUnit,taskUI
+taskUI.mustRunAfter taskUnit
+//taskUnit.shouldRunAfter taskUI
+taskMergeReports.dependsOn taskAll
+//taskAll.finalizedBy taskMergeReports

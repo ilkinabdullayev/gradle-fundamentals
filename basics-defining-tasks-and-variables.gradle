@@ -1,0 +1,76 @@
+apply plugin: 'java'
+
+def projectVersion = "2.0"
+project.ext.heyHey = "huy"
+ext.Tel = "Hey"
+
+project.task("task1")
+
+task("task2")
+task2.description = "Xiyar"
+task2.group = "Integration tests 3"
+task2 << {
+    println "salak"
+}
+
+
+
+task "task3"
+task3.description = "Xiyar 3"
+task3.group = "Integration tests 3"
+task3.doLast {
+    println "xiyar"
+}
+
+
+task task4 {
+    doLast {
+        println "beach - $heyHey - $Tel"
+    }
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+}
+
+task saySomething {
+    doLast {
+        println "Hello, Xiyar"
+    }
+}
+
+saySomething << {
+    println "Hello dedim"
+}
+
+task runAllIntegrationTests() {
+    description "Run all integration tests"
+    group "Integration tests2"
+    doFirst {
+        println "gijjj"
+    }
+}
+
+task Task7 {
+    group 'Group Important!'
+    description 'Use only you\'re idiot'
+    doFirst {
+        println "Idiot! -version $projectVersion"
+    }
+    doLast {
+        println 'You\'re idiot, idiot'
+    }
+    dependsOn task4
+}
+
+Task7.dependsOn runAllIntegrationTests
+
+
+Task7.doFirst {
+    println "Idiot 2"
+}
+
+Task7.doFirst {
+    println "Idiot 22"
+}
