@@ -1,6 +1,34 @@
 apply plugin: 'java'
 
-task task1 << { println "Task 1"}
-task task2 << { println "Task 2"}
+def contentSpec = copySpec {
+    exclude '*.jpg'
+    from 'img'
+}
 
-//task2.mustRunAfter task1
+def contentSpec2 = copySpec {
+    exclude { it.file.name.startsWith('j') }
+    from 'img'
+}
+
+
+task copyImages(type: Copy) {
+    exclude '*.jpg', '*.png'
+    from 'img'
+    into 'dest'
+}
+
+task copyImages2(type: Copy) {
+    //with contentSpec
+    with contentSpec2
+    into 'dest'
+}
+
+task copyConfig(type: Copy) {
+    include 'web.xml'
+    from 'src/main/resources'
+    into 'config'
+    expand ([
+        bgColor: '#0000CC',
+        teamColor: 'blue'
+    ])
+}

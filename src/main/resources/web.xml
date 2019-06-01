@@ -1,0 +1,18 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+    <servlet>
+        <servlet-name>comingsoon</servlet-name>
+        <servlet-class>mysite.server.ComingSoonServlet</servlet-class>
+        <init-param>
+            <param-name>teamColor</param-name>
+            <param-value>${teamColor}</param-value>
+        </init-param>
+        <init-param>
+            <param-name>bgColor</param-name>
+            <param-value>${bgColor}</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>comingsoon</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+</web-app>

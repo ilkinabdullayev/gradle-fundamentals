@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+task task1 << { println "Task 1"}
+task task2 << { println "Task 2"}
+task task3 << { println "Task 3"}
+
+task1.finalizedBy task3
+task1.dependsOn task2
+task2.shouldRunAfter task3
+//task2.mustRunAfter task1
+
+task1 << {
+    println "New 1"
+}
