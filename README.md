@@ -28,10 +28,6 @@ gradle help --task [taskName]
 ```
 
 ```
-gradle mySubproject:taskName
-```
-
-```
 gradle [taskName] -t
 ```
 
