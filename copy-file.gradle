@@ -1,0 +1,34 @@
+apply plugin: 'java'
+
+def contentSpec = copySpec {
+    exclude '*.jpg'
+    from 'img'
+}
+
+def contentSpec2 = copySpec {
+    exclude { it.file.name.startsWith('j') }
+    from 'img'
+}
+
+
+task copyImages(type: Copy) {
+    exclude '*.jpg', '*.png'
+    from 'img'
+    into 'dest'
+}
+
+task copyImages2(type: Copy) {
+    //with contentSpec
+    with contentSpec2
+    into 'dest'
+}
+
+task copyConfig(type: Copy) {
+    include 'web.xml'
+    from 'src/main/resources'
+    into 'config'
+    expand ([
+        bgColor: '#0000CC',
+        teamColor: 'blue'
+    ])
+}
