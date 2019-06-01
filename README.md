@@ -5,9 +5,9 @@ gradle dependencies
 ```
 
 ```
-gradle build -t
+gradle [taskName] -t
 ```
 
 ```
-gradle build -q
+gradle [taskName] -q
 ```
