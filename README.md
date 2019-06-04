@@ -24,6 +24,10 @@ gradle tasks (--all)
 ```
 
 ```
+gradle taskName --rerun-tasks
+```
+
+```
 gradle help --task [taskName]
 ```
 
