@@ -19,6 +19,11 @@ gradle dependencies
 gradle -q api:properties
 ```
 
+
+```
+gradle test --tests [regex](*should*)
+```
+
 ```
 gradle tasks (--all)
 ```
